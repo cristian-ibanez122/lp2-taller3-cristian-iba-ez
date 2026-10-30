@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %}Categorías - Tienda Virtual{% endblock %}
+
+{% block contenido %}
+<div class="lista-categorias">
+    <h2>Categorías</h2>
+
+    <ul>
+        {% for categoria in categorias %}
+            <li>
+                <a href="{{ url_for('main.index', categoria=categoria.id) }}">
+                    {{ categoria.nombre }}
+                </a>
+            </li>
+        {% else %}
+            <li>No hay categorías disponibles.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+

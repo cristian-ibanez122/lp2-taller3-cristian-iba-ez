@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block titulo %}Catálogo - Tienda Virtual{% endblock %}
+
+{% block contenido %}
+
+<div class="filtros">
+    <a href="{{ url_for('main.index') }}"
+       class="chip {% if not categoria_id %}chip-activo{% endif %}">
+        Todas
+    </a>
+
+    {% for categoria in categorias %}
+        <a href="{{ url_for('main.index', categoria=categoria.id) }}"
+           class="chip {% if categoria_id == categoria.id %}chip-activo{% endif %}">
+            {{ categoria.nombre }}
+        </a>
+    {% endfor %}
+</div>
+
+<div class="catalogo">
+    {% for producto in productos %}
+
+        <div class="tarjeta-producto">
+            <img
+                src="{{ url_for('static', filename=producto.foto) }}"
+                alt="{{ producto.nombre }}"
+            >
+
+            <h3>{{ producto.nombre }}</h3>
+            <p>{{ producto.marca }}</p>
+            <p>{{ producto.categoria.nombre }}</p>
+            <p>${{ "{:,.0f}".format(producto.precio) }}</p>
+
+            {% if producto.disponible %}
+                <p>Disponible</p>
+            {% else %}
+                <p>Agotado</p>
+            {% endif %}
+
+            <a href="{{ url_for('main.detalle', sku=producto.sku) }}">
+                Ver detalle
+            </a>
+        </div>
+
+    {% else %}
+        <p>No hay productos para mostrar en este momento.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

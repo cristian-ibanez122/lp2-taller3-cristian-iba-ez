@@ -1,0 +1,14 @@
+"""
+Punto de entrada del frontend.
+
+Ejecutar con:
+    python run.py
+"""
+
+from app import create_app 
+
+app = create_app() 
+
+if __name__ == "__main__": 
+    # Inicia Flask y permite conexiones desde fuera del contenedor.
+    app.run(host="0.0.0.0", port=5000, debug=False)
