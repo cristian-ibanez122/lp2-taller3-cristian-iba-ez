@@ -7,7 +7,8 @@
 
 ## Autor
 
-- [@estudiante](https://www.github.com/estudiante)
+- [@cristian ibañez
+- ](https://www.github.com/estudiante)
 
 ## Descripción del Proyecto
 
